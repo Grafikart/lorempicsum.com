@@ -1,0 +1,276 @@
+@import "compass";
+
+$color:   #525252;
+$red:     #e35151;
+$yellow:  #fcc956;
+$yellowd: #c49524;
+$width:   627px;
+$default-transition-duration: .2s;
+
+@include global-reset;
+
+/*------------------------------------*\
+    $GENERIC
+\*------------------------------------*/
+body{
+    margin: 0; padding: 0;
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    color: #525252;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+select{ width: $width; }
+a{ color:#525252; }
+.row{@include clearfix; margin: 1em 0px;}
+.col3{ width: 33.33%; float: left; }
+*{ @include box-sizing(border-box);  }
+/*------------------------------------*\
+    $HEADER
+\*------------------------------------*/
+.header{
+    height: 445px;
+    @include background-image(linear-gradient(bottom, #e35151 0%, #e65b5a 100%));
+    text-align: center;
+    .header-logo{
+        padding: 50px 0;
+    }
+    h1{
+        color: #fff;
+        font-size: 36px;
+        font-weight: bold;
+    }
+    p{
+        font-size: 24px;
+        font-weight: 300;
+        color: #ff8c85;
+        margin-bottom: 40px;
+    }
+    .wrap{ width: 685px; margin: 0 auto;}
+    .select{float: left; }
+    .or{
+        font-size: 16px;
+        line-height: 50px;
+        font-style: italic;
+
+        color: #FFF;
+        font-weight: 300;
+          color: #ff8c85;
+    }
+    .photoshop{
+        display: block;
+        float: right;
+        width: 315px;
+        height: 56px; line-height: 56px;
+        text-decoration: none;
+        background: #1776c5;
+        border-bottom: 2px solid #0a5798;
+        color: #fff; font-size: 16px;
+        strong{ font-weight: 600; }
+        @include border-radius(4px);
+              @include transition-duration;
+        &:hover{
+            @include box-shadow(inset 0 2px 0 rgba(6,77,137,.75));
+            border: 0;
+            background: #0069b7;
+        }
+    }
+}
+
+/*------------------------------------*\
+    $CONTENT
+\*------------------------------------*/
+.content{
+    width: $width;
+    margin: 0 auto;
+    padding: 40px 0;
+    @include clearfix;
+    .img{
+        background-color: #203040;
+        cursor: pointer;
+        float: left;
+        position: relative;
+        margin-bottom: 20px;
+        @include border-radius(10px);
+        @include transition-duration;
+        @include transform(scale(1));
+        &.pad{ margin-right: 20px; }
+        img{
+            display: block;
+            @include border-radius(10px);
+            @include opacity(1);
+            @include transition-duration;
+        }
+        .format, .copy{
+            position: absolute;
+            top: 50%; margin-top: -20px;
+            left: 0; right: 0;
+            text-align: center;
+            font-weight: bold;
+
+            color: #fff;
+            line-height: 40px;
+            font-size: 40px;
+            @include opacity(0);
+            @include transition-duration;
+        }
+        .link{
+            position: absolute;
+            left: 0; right: 0; bottom: 30px;
+            color: #FFF;
+            font-size: 16px;
+            text-align: center;
+            @include opacity(0);
+            @include transition-duration;
+        }
+        .zclip,.copyclip{
+            position: absolute;
+            top: 0!important; left: 0!important; right: 0!important; bottom: 0!important;
+            width: 100% !important; height: 100% !important;
+        }
+    }
+    .img:hover{
+        img{@include opacity(.2);}
+        .format, .link{@include opacity(.5);}
+    }
+    .img.copied{
+        background-color: #94ca77;
+        @include transform(scale(0.9));
+        img{@include opacity(.2);}
+        .format, .link{@include opacity(0);}
+        .copy{@include opacity(1);}
+    }
+}
+
+/*------------------------------------*\
+    $FOOTER
+\*------------------------------------*/
+.footer{
+    width: $width;
+    margin: 0 auto;
+    padding: 20px 0;
+    font-size: 0.9em;
+    line-height: 1.8;
+    color:lighten($color, 25);
+    @include clearfix;
+    a{ color:$color; }
+}
+
+/*------------------------------------*\
+    $PLUGIN
+\*------------------------------------*/
+.plugin{
+    display: none;
+    background-color: #f2f2f2;
+
+    @include box-shadow(inset 0 1px 5px rgba(196,196,196,.75));
+    @include clearfix;
+    .wrap{ width: 700px; margin: 0 auto; }
+    h2{
+        margin: 40px 0;
+        color: #e35151;
+        font-size: 36px;
+        font-weight: bold;
+    }
+    .col3{ text-align: center; }
+    img{ display: block; margin: 0 auto 10px auto; }
+    iframe{ display: block; }
+    p{ margin: 35px 0px; }
+    .downloads{
+        text-align: center;
+    }
+    .download{
+        display: inline-block;
+        text-align: center;
+        font-size: 18px; color: #fff;
+        width: 287px; margin: 0 10px;
+        height: 56px; line-height: 56px;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #4591d1;
+        position: relative;
+        @include border-radius(4px);
+        border-bottom: 2px solid #0a5798;
+                 @include transition-duration;
+        &:hover{
+                        @include box-shadow(inset 0 2px 0 rgba(6,77,137,.75));
+            border: 0;
+            background: #0069b7;
+        }
+        i{
+            position: absolute;
+            top: 22px; right: 26px;
+            width: 11px; height: 12px;
+            display: block;
+            background:url(img/arrow.png);
+        }
+        em{
+            font-weight: normal;
+            @include opacity(0.5);
+        }
+    }
+}
+
+/*------------------------------------*\
+    $CHOSEN
+\*------------------------------------*/
+.chosen-container{
+    cursor: pointer;
+    display: block; position: relative;
+    vertical-align: middle;
+    width: 320px!important;
+    margin: 0 auto;
+    zoom: 1;
+    -webkit-user-select: none;
+    height: 56px;
+    background-color: $yellow;
+    border-bottom: 2px solid #d64447;
+    @include border-radius(4px);
+}
+.chosen-single{
+    display: block;
+    text-align: center;
+    height: 56px; line-height: 56px;
+    color: $yellowd;
+    font-weight: 400;
+    div{
+        display: block;
+        position: absolute; top: 24px; right: 25px;
+        width: 0; height: 0;
+        border-right: 3px solid transparent;
+        border-left: 3px solid transparent;
+        border-bottom: 6px solid $yellowd;
+        @include transition-duration;
+        @include transform(rotate(180deg));
+        .chosen-with-drop &{
+            @include transform(rotate(0deg));
+        }
+    }
+}
+.chosen-search{ display: none; }
+.chosen-drop{
+    position: absolute;
+    padding: 10px 0;
+    z-index: 10;
+    top: 55px; left: 0; right: 0;
+    height: 0;
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.95);
+    line-height: 36px;
+    color: #e55151;
+    font-size: 18px; font-weight: 600;
+    color: #7b7b7b;
+    border-bottom:2px solid rgba(0,0,0,0.1);
+    overflow: hidden;
+    @include border-bottom-radius(4px);
+    @include transition-duration;
+    @include opacity(0);
+    li{ @include transition-duration; cursor: pointer; }
+    .highlighted{ color: $red; background-color: rgba(0,0,0,0.05); }
+}
+.chosen-with-drop .chosen-drop{
+    top: 53px; height: auto;
+    @include opacity(1);
+}
